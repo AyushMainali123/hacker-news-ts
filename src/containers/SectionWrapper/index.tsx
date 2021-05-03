@@ -6,12 +6,13 @@ const _SectionWrapper = styled.div`
 `;
 
 interface SectionProps {
-    children: React.ReactNode
+    children: React.ReactNode,
+    className?: string;
 }
 
-const SectionWrapper = ({children}: SectionProps) => {
+const SectionWrapper = ({children, className}: SectionProps) => {
     return (
-        <_SectionWrapper>
+        <_SectionWrapper className = {className}>
             {children}
         </_SectionWrapper>
     )
