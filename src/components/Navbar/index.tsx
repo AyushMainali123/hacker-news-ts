@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const _NavWrapper = styled.nav`
     background: ${colors.white};
-    height: 50px;
+    min-height: 50px;
     display: grid;
     place-items: center;
 `
