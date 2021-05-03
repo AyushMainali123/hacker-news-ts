@@ -1,10 +1,16 @@
-import './App.css';
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import PageWrapper from "./containers/PageWrapper";
+import MainContainer from "./components/MainContainer";
 
 function App() {
   return (
-    <div className="App">
-      Hello From React!!
-    </div>
+    <PageWrapper>
+      <Navbar />
+      <MainContainer />
+      <Footer />
+    </PageWrapper>
   );
 }
 
