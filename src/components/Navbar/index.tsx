@@ -1,10 +1,21 @@
 import React from 'react'
+import colors from 'src/styles/colors'
+import styled from 'styled-components'
+
+const _NavWrapper = styled.nav`
+    background: ${colors.white};
+    height: 50px;
+    display: grid;
+    place-items: center;
+`
+
 
 const Navbar = () => {
+    const logoSrc = `${process.env.PUBLIC_URL}/assets/images/logo.png`;
     return (
-        <div>
-            This is navbar
-        </div>
+        <_NavWrapper>
+            <img src={ logoSrc }/>
+        </_NavWrapper>
     )
 }
 
