@@ -13,7 +13,7 @@ const initialData:HackerNewsItemsArray = {
     chunksArray: [],
     chunksDisplayedPerRequest: 20,
     currentPosition: 0,
-    totalChunks: 1,
+    totalChunks: 0,
 }
 
 const initialState: ResponseArrayStateInterface = {

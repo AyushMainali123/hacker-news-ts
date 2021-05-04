@@ -3,7 +3,7 @@ import styled from "styled-components";
 import MainSectionBottom from "../MainSectionBottom";
 import MainSectionMid from "../MainSectionMid";
 import MainSectionTop from "../MainSectionTop";
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect} from 'react'
 import { ArrayContext } from '../../Context/HackerNewsResponseArrayContext'
 import {ActionType} from '../../actions/HackerNewsResponseArray'
 import axios from "src/axios";
@@ -17,8 +17,7 @@ const MainContainerWrapper = styled.div`
 
 const MainContainer = () => {
 
-  const { state, dispatch } = useContext(ArrayContext)
-  const [currentPage, setCurrentPage] = useState(0)
+  const {  dispatch } = useContext(ArrayContext)
   
   useEffect(() => {
     console.log(ActionType)
@@ -47,14 +46,13 @@ const MainContainer = () => {
 
     const apiCallerFunction = async() => {
       const response = await getHackerRankResponseArray('/topstories.json?print=pretty')
-      console.log(state)
       return response;
     }
 
     apiCallerFunction();
     
       
-  }, [currentPage])
+  }, [])
 
 
   return (
@@ -67,7 +65,6 @@ const MainContainer = () => {
 
       {/* Bottom Section */}
       <MainSectionBottom />
-      <button onClick = {()=>setCurrentPage(prev => prev + 1)}>Click Me</button>
     </MainContainerWrapper>
   );
 };
