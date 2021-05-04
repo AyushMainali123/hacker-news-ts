@@ -1,8 +1,7 @@
-import React from 'react'
 import colors from 'src/styles/colors'
 import styled from 'styled-components'
 
-const _FooterWrapper = styled.footer`
+const FooterWrapper = styled.footer`
     min-height: 100px;
     display: grid;
     place-items: center;
@@ -12,9 +11,9 @@ const _FooterWrapper = styled.footer`
 const Footer = () => {
     const logoSrc = `${process.env.PUBLIC_URL}/assets/images/logo-footer.png`
     return (
-        <_FooterWrapper>
-            <img src={ logoSrc }/>
-        </_FooterWrapper>
+        <FooterWrapper>
+            <img src={ logoSrc } alt="Footer Logo"/>
+        </FooterWrapper>
     )
 }
 

@@ -1,8 +1,7 @@
-import React from 'react'
 import colors from 'src/styles/colors'
 import styled from 'styled-components'
 
-const _NavWrapper = styled.nav`
+const NavWrapper = styled.nav`
     background: ${colors.white};
     min-height: 50px;
     display: grid;
@@ -13,10 +12,10 @@ const _NavWrapper = styled.nav`
 const Navbar = () => {
     const logoSrc = `${process.env.PUBLIC_URL}/assets/images/logo.png`;
     return (
-        <_NavWrapper>
-            <img src={ logoSrc }/>
-        </_NavWrapper>
-    )
+      <NavWrapper>
+        <img src={logoSrc} alt="Header Logo" />
+      </NavWrapper>
+    );
 }
 
 export default Navbar
