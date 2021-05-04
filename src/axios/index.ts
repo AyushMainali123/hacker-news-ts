@@ -1,5 +1,5 @@
 import axios from 'axios'
 
-const Axios = axios({ baseURL: 'https://hacker-news.firebaseio.com/v0/' })
+const instance = axios.create({ baseURL: 'https://hacker-news.firebaseio.com/v0/' })
 
-export default Axios;
+export default instance;
