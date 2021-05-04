@@ -3,7 +3,9 @@ import styled from "styled-components";
 import MainSectionBottom from "../MainSectionBottom";
 import MainSectionMid from "../MainSectionMid";
 import MainSectionTop from "../MainSectionTop";
-// import { useState, useEffect } from 'react';
+import { useContext, useEffect } from 'react'
+import {ArrayContext} from '../../Context/HackerNewsResponseArrayContext'
+
 
 const MainContainerWrapper = styled.div`
   background: ${colors.grey};
@@ -12,9 +14,13 @@ const MainContainerWrapper = styled.div`
 `;
 
 const MainContainer = () => {
-  // const [loading, setLoading] = useState<boolean>(true);
-  // const [error, setError] = useState<null | string>(null);
-  // const [itemsArray, setItemsArray] = useState([]);
+
+  const { state, dispatch } = useContext(ArrayContext)
+  
+  useEffect(() => {
+      console.log(state, dispatch)
+  }, [])
+  
 
   return (
     <MainContainerWrapper>

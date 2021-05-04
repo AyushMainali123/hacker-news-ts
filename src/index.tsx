@@ -9,7 +9,6 @@ ReactDOM.render(
     <HackerNewsResponseArrayContext>
         <App />
     </HackerNewsResponseArrayContext>
-    
   </React.StrictMode>,
   document.getElementById('root')
 );
