@@ -9,6 +9,7 @@ const StyledButton = styled.button<{variant: "pill" | "standard" | "default"}>`
     border: none;
     border-radius: 12px;
     font-size: 16px;
+    cursor: pointer;
     ${
     props => {
         switch (props.variant) {

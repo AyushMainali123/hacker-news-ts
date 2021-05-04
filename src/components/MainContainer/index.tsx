@@ -1,19 +1,14 @@
 import colors from "src/styles/colors";
 import styled from "styled-components";
-import SectionWrapper from "../../containers/SectionWrapper/index";
-import Button from "../Button";
+import MainSectionBottom from "../MainSectionBottom";
+import MainSectionMid from "../MainSectionMid";
+import MainSectionTop from "../MainSectionTop";
 // import { useState, useEffect } from 'react';
 
 const MainContainerWrapper = styled.div`
   background: ${colors.grey};
   padding-left: 15px;
   padding-right: 15px;
-`;
-
-const LoadMoreButton = styled(Button)`
-  display: block;
-  width: 100%;
-  cursor: pointer;
 `;
 
 const MainContainer = () => {
@@ -24,15 +19,13 @@ const MainContainer = () => {
   return (
     <MainContainerWrapper>
       {/* Top Section */}
-      <SectionWrapper>This Is A Top Section</SectionWrapper>
+      <MainSectionTop />
 
       {/* Mid Section */}
-      <SectionWrapper>This Is A Mid Section</SectionWrapper>
+      <MainSectionMid />
 
       {/* Bottom Section */}
-      <SectionWrapper>
-        <LoadMoreButton variant="standard">Load More</LoadMoreButton>
-      </SectionWrapper>
+      <MainSectionBottom />
     </MainContainerWrapper>
   );
 };
