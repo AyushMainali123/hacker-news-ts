@@ -1,10 +1,16 @@
 import colors from 'src/styles/colors';
 import styled from 'styled-components'
 
+const returnButtonBackgroundColor = (selected:  boolean) => {
+    if (selected) {
+        return colors.primary
+    }
+    return colors.grey;
+}
 
-const StyledButton = styled.button<{variant: "pill" | "standard" | "default"}>`
+const StyledButton = styled.button<{variant: "pill" | "standard" | "default", selected: true | false}>`
     font-weight: 700;
-    background: ${colors.primary};
+    background: ${props => returnButtonBackgroundColor(props.selected)};
     outline: none;
     border: none;
     border-radius: 12px;
@@ -29,12 +35,13 @@ interface ButtonProps {
     children: React.ReactNode,
     className?: string,
     onClick?: () => void;
-    variant?: "pill" | "standard" | "default"
+    variant?: "pill" | "standard" | "default",
+    selected?: true | false
 }
 
-const Button = ({children, className, onClick, variant="standard"}: ButtonProps) => {
+const Button = ({children, className, onClick, variant="standard", selected=true}: ButtonProps) => {
     return (
-        <StyledButton className = {className} onClick = {onClick} variant={variant}>
+        <StyledButton className = {className} onClick = {onClick} variant={variant} selected={selected}>
             {children}
         </StyledButton>
     )
