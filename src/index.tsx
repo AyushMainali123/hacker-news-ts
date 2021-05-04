@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './styles/global.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import HackerNewsResponseArrayContext from './Context/HackerNewsResponseArrayContext'
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <HackerNewsResponseArrayContext>
+        <App />
+    </HackerNewsResponseArrayContext>
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
