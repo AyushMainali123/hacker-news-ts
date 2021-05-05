@@ -36,7 +36,7 @@ const MainSectionTop = ({activeValue, setActiveValue}: PropsInterface) => {
         })
         const apiCallFunction = async () => {
             try {
-                const responseArray = await axios('/topstories.json?print=pretty')
+                const responseArray = await axios('/newstories.json?print=pretty')
                 if (value === "New") {
                     // For Re rendering all datas
                     arrayDispatch({

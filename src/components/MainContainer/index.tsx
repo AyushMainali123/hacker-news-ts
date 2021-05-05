@@ -51,7 +51,7 @@ const MainContainer = () => {
     }
 
     const apiCallerFunction = async () => {
-      const response = await getHackerRankResponseArray('/topstories.json?print=pretty')    
+      const response = await getHackerRankResponseArray('/newstories.json?print=pretty')    
       return response;
     }
     apiCallerFunction();
