@@ -3,6 +3,7 @@ import {useContext} from 'react'
 import { ArrayContext } from '../../Context/HackerNewsResponseArrayContext'
 import {ItemsContext} from '../../Context/HackerNewsResponseItemsContext'
 import ItemsCardContainer from "../ItemsCardContainer";
+import Spinner from "../Spinner";
 const MainSectionMid = () => {
 
     const { state: arrayState } = useContext(ArrayContext);
@@ -14,7 +15,7 @@ const MainSectionMid = () => {
 
     const returnMainContainerBody = () => {
         if (itemsLoading === true) {
-            return <h1 className = "loading">Loading....</h1>
+            return <Spinner />
         }
         if (itemsError.length > 0) {
             return <h1 className = "error">{ itemsError }</h1>
