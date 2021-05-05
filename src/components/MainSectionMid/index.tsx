@@ -15,10 +15,12 @@ const MainSectionMid = () => {
         if (error.length > 0) {
             return <h1 className = "error">{ error }</h1>
         }
-        
-        const positionsArray = Array.from(Array(data.currentPosition + 1).keys())
-        const dataToBeReturned = positionsArray.map(position => data.chunksArray[position].map((item: number) => <div key={item} className="data">{item}</div>))
-        
+
+        // returns total Number of data to be returned
+        const positionsArray = Array.from(Array(data.totalChunks).keys())
+
+        // Final Array data that is returned
+        const dataToBeReturned = positionsArray.map(position => data.chunksArray[position].map((item: number) => <div key={item} className="data">{item}</div>))        
         return [
             ...dataToBeReturned,
         ]

@@ -33,6 +33,8 @@ export const arrayReducer = (state: ResponseArrayStateInterface, action: Respons
             }
         case ActionType.FETCH_FAILURE:
             return { ...state, loading: false, error: action.payload.message }
+        case ActionType.INCREMENT_COUNT:
+            return {...state, data: {...state.data, totalChunks: state.data.totalChunks + 1, currentPosition: state.data.currentPosition + 1}}
         default:
             return {...state}
     }

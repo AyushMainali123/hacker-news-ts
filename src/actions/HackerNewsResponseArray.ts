@@ -1,6 +1,7 @@
 export enum ActionType {
     FETCH_SUCCESS,
-    FETCH_FAILURE
+    FETCH_FAILURE,
+    INCREMENT_COUNT
 }
 
 
@@ -15,4 +16,8 @@ export interface ErrorFetch {
     payload: {message: string}
 }
 
-export type ResponseArrayActions = SuccessFetch | ErrorFetch
+export interface IncrementCount {
+    type: ActionType.INCREMENT_COUNT
+}
+
+export type ResponseArrayActions = SuccessFetch | ErrorFetch | IncrementCount
