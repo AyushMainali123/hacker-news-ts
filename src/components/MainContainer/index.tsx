@@ -3,7 +3,7 @@ import styled from "styled-components";
 import MainSectionBottom from "../MainSectionBottom";
 import MainSectionMid from "../MainSectionMid";
 import MainSectionTop from "../MainSectionTop";
-import { useContext, useEffect} from 'react'
+import {useState,  useContext, useEffect} from 'react'
 import { ArrayContext } from '../../Context/HackerNewsResponseArrayContext'
 import {ActionType} from '../../actions/HackerNewsResponseArray'
 import axios from "src/axios";
@@ -16,8 +16,10 @@ const MainContainerWrapper = styled.div`
   box-shadow: inset 0px 3px 8px rgba(0, 0, 0, 0.08);
 `;
 
-const MainContainer = () => {
+type ActiveValueTypes = "New" | "Past"
 
+const MainContainer = () => {
+  const [activeValue, setActiveValue] = useState<ActiveValueTypes>("New");
   const {  dispatch } = useContext(ArrayContext)
   
   useEffect(() => {
@@ -53,13 +55,14 @@ const MainContainer = () => {
     apiCallerFunction();
     
       
-  }, [])
+  }, [dispatch])
+
 
 
   return (
     <MainContainerWrapper>
       {/* Top Section */}
-      <MainSectionTop />
+      <MainSectionTop activeValue={activeValue} setActiveValue={ setActiveValue }/>
 
       {/* Mid Section */}
       <MainSectionMid />

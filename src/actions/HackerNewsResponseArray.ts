@@ -1,7 +1,8 @@
 export enum ActionType {
     FETCH_SUCCESS,
     FETCH_FAILURE,
-    INCREMENT_COUNT
+    INCREMENT_COUNT,
+    RESET_DATAS
 }
 
 
@@ -20,4 +21,8 @@ export interface IncrementCount {
     type: ActionType.INCREMENT_COUNT
 }
 
-export type ResponseArrayActions = SuccessFetch | ErrorFetch | IncrementCount
+export interface ResetDatas {
+    type: ActionType.RESET_DATAS
+}
+
+export type ResponseArrayActions = SuccessFetch | ErrorFetch | IncrementCount | ResetDatas

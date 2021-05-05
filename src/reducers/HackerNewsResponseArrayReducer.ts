@@ -1,3 +1,4 @@
+import { HackerNewsItemsArray } from 'src/interfaces/HackerNewsItemsArray';
 import { ResponseArrayStateInterface } from 'src/interfaces/ResponseArrayStateInterface'
 import { ActionType, ResponseArrayActions } from '../actions/HackerNewsResponseArray'
 
@@ -34,7 +35,16 @@ export const arrayReducer = (state: ResponseArrayStateInterface, action: Respons
         case ActionType.FETCH_FAILURE:
             return { ...state, loading: false, error: action.payload.message }
         case ActionType.INCREMENT_COUNT:
-            return {...state, data: {...state.data, totalChunks: state.data.totalChunks + 1, currentPosition: state.data.currentPosition + 1}}
+            return { ...state, data: { ...state.data, totalChunks: state.data.totalChunks + 1, currentPosition: state.data.currentPosition + 1 } }
+        case ActionType.RESET_DATAS:
+            const initialData:HackerNewsItemsArray = {
+                totalResponse: [],
+                chunksArray: [],
+                chunksDisplayedPerRequest: 20,
+                currentPosition: 0,
+                totalChunks: 0,
+            }
+            return {...state, error: '', data: {...initialData}, loading: true}
         default:
             return {...state}
     }

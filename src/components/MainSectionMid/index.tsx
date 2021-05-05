@@ -5,9 +5,8 @@ import { ArrayContext } from '../../Context/HackerNewsResponseArrayContext'
 const MainSectionMid = () => {
 
     const { state } = useContext(ArrayContext);
-    console.log(state)
     const { loading, data, error } = state;
-
+    console.log({state})
     const returnMainContainerBody = () => {
         if (loading === true) {
             return <h1 className = "loading">Loading....</h1>

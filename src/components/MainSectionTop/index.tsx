@@ -1,8 +1,10 @@
 import SectionWrapper from "../../containers/SectionWrapper";
 import Button from "../Button";
 import styled from 'styled-components'
-import {useState} from "react";
-
+import { useContext} from "react";
+import axios from "src/axios";
+import { ArrayContext } from '../../Context/HackerNewsResponseArrayContext'
+import {ActionType} from '../../actions/HackerNewsResponseArray'
 
 type ActiveValueTypes = "New" | "Past"
 
@@ -11,11 +13,45 @@ const StyledSectionWrapper = styled(SectionWrapper)`
     gap: 7px;
 `
 
-const MainSectionTop = () => {
+interface PropsInterface {
+    activeValue: ActiveValueTypes,
+    setActiveValue: ((value: ActiveValueTypes) => void);
+}
 
-    const [activeValue, setActiveValue] = useState<ActiveValueTypes>("New");
+
+const MainSectionTop = ({activeValue, setActiveValue}: PropsInterface) => {
+
+    const {dispatch} = useContext(ArrayContext)
     
     const handleButtonClick = (value: ActiveValueTypes) => {
+
+        // Resseting All Datas 
+        dispatch({
+            type: ActionType.RESET_DATAS
+        })
+        const apiCallFunction = async () => {
+            try {
+                const responseArray = await axios('/topstories.json?print=pretty')
+                if (value === "New") {
+                    // For Re rendering all datas
+                    dispatch({
+                        type: ActionType.FETCH_SUCCESS,
+                        payload: responseArray
+                    })
+                    return;
+                }
+                
+                if (value === "Past") {
+                    console.log("Past Data")
+                }
+                
+            }
+            catch (error) {
+                console.log(error)
+            }
+           
+        }
+        apiCallFunction()
         setActiveValue(value)
     }
 
