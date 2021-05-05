@@ -11,7 +11,7 @@ interface Props {
 const initialData:HackerNewsItemsArray = {
     totalResponse: [],
     chunksArray: [],
-    chunksDisplayedPerRequest: 20,
+    chunksDisplayedPerRequest: 10,
     currentPosition: 0,
     totalChunks: 0,
 }

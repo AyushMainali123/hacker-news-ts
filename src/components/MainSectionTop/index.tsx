@@ -42,12 +42,22 @@ const MainSectionTop = ({activeValue, setActiveValue}: PropsInterface) => {
                 }
                 
                 if (value === "Past") {
-                    console.log("Past Data")
+                     // For Re rendering all datas
+                    dispatch({
+                        type: ActionType.FETCH_SUCCESS,
+                        payload: responseArray
+                    })
+                    return;
                 }
                 
             }
             catch (error) {
-                console.log(error)
+                dispatch({
+                    type: ActionType.FETCH_FAILURE,
+                    payload: {
+                        message: error.message
+                    }
+                })
             }
            
         }

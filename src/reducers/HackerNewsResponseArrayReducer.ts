@@ -40,7 +40,7 @@ export const arrayReducer = (state: ResponseArrayStateInterface, action: Respons
             const initialData:HackerNewsItemsArray = {
                 totalResponse: [],
                 chunksArray: [],
-                chunksDisplayedPerRequest: 20,
+                chunksDisplayedPerRequest: 10,
                 currentPosition: 0,
                 totalChunks: 0,
             }
