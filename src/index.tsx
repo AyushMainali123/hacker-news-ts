@@ -4,11 +4,15 @@ import './styles/global.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import HackerNewsResponseArrayContext from './Context/HackerNewsResponseArrayContext'
+import HackerNewsResponseItemsContext from './Context/HackerNewsResponseItemsContext';
 ReactDOM.render(
   <React.StrictMode>
-    <HackerNewsResponseArrayContext>
-        <App />
-    </HackerNewsResponseArrayContext>
+    <HackerNewsResponseItemsContext>
+      <HackerNewsResponseArrayContext>
+          <App />
+      </HackerNewsResponseArrayContext>
+    </HackerNewsResponseItemsContext>
+
   </React.StrictMode>,
   document.getElementById('root')
 );
