@@ -2,6 +2,7 @@ import SectionWrapper from "../../containers/SectionWrapper";
 import {useContext} from 'react'
 import { ArrayContext } from '../../Context/HackerNewsResponseArrayContext'
 import {ItemsContext} from '../../Context/HackerNewsResponseItemsContext'
+import ItemsCardContainer from "../ItemsCardContainer";
 const MainSectionMid = () => {
 
     const { state: arrayState } = useContext(ArrayContext);
@@ -19,11 +20,8 @@ const MainSectionMid = () => {
             return <h1 className = "error">{ itemsError }</h1>
         }
 
-        console.log({itemsData, itemsError, itemsLoading})
-        const dataToBeReturned = itemsData.map(data => <div key={data.id}>{data.by}</div>)
-        return [
-            ...dataToBeReturned,
-        ]
+        console.log({ itemsData, itemsError, itemsLoading })
+        return <ItemsCardContainer data={ itemsData }/>
     }
 
     return (
