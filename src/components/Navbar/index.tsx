@@ -6,6 +6,7 @@ const NavWrapper = styled.nav`
     min-height: 50px;
     display: grid;
     place-items: center;
+    box-shadow: 0px 3px 28px rgba(0, 0, 0, 0.08);
 `
 
 

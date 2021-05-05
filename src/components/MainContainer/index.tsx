@@ -10,9 +10,10 @@ import axios from "src/axios";
 
 
 const MainContainerWrapper = styled.div`
-  background: ${colors.grey};
+  background: ${colors.white};
   padding-left: 15px;
   padding-right: 15px;
+  box-shadow: inset 0px 3px 8px rgba(0, 0, 0, 0.08);
 `;
 
 const MainContainer = () => {
