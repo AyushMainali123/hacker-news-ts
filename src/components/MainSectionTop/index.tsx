@@ -43,9 +43,11 @@ const MainSectionTop = ({activeValue, setActiveValue}: PropsInterface) => {
                 
                 if (value === "Past") {
                      // For Re rendering all datas
+                    const reverseArrayResponse = {data: responseArray.data.reverse()};
+                    console.log({reverseArrayResponse});
                     dispatch({
                         type: ActionType.FETCH_SUCCESS,
-                        payload: responseArray
+                        payload: reverseArrayResponse
                     })
                     return;
                 }

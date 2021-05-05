@@ -4,7 +4,10 @@ import Footer from "./components/Footer";
 import PageWrapper from "./containers/PageWrapper";
 import MainContainer from "./components/MainContainer";
 
+
 function App() {
+
+
   return (
     <PageWrapper>
       <Navbar />

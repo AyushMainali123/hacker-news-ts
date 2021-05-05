@@ -16,7 +16,7 @@ const initialState: ResponseArrayItemsStateInterface = {
 }
 
 
-const ItemsContext = createContext<{ state: ResponseArrayItemsStateInterface, dispatch: React.Dispatch<ResponseItemActions> }>({
+export const ItemsContext = createContext<{ state: ResponseArrayItemsStateInterface, dispatch: React.Dispatch<ResponseItemActions> }>({
     state: initialState,
     dispatch: () => undefined
 })

@@ -5,7 +5,8 @@ import MainSectionMid from "../MainSectionMid";
 import MainSectionTop from "../MainSectionTop";
 import {useState,  useContext, useEffect} from 'react'
 import { ArrayContext } from '../../Context/HackerNewsResponseArrayContext'
-import {ActionType} from '../../actions/HackerNewsResponseArray'
+import { ActionType } from '../../actions/HackerNewsResponseArray'
+import {ItemsContext} from '../../Context/HackerNewsResponseItemsContext'
 import axios from "src/axios";
 
 
@@ -20,16 +21,17 @@ type ActiveValueTypes = "New" | "Past"
 
 const MainContainer = () => {
   const [activeValue, setActiveValue] = useState<ActiveValueTypes>("New");
-  const {  dispatch } = useContext(ArrayContext)
+  const {  dispatch: arrayDispatch } = useContext(ArrayContext)
+  const { dispatch: itemsDispatch } = useContext(ItemsContext)
   
   useEffect(() => {
-    console.log(ActionType)
+    console.log(itemsDispatch)
     const getHackerRankResponseArray = async (url: string) => {
       try {
         const responseArray = await axios(url)
 
         // When Successfully Fetched From Server
-        dispatch({
+        arrayDispatch({
           type: ActionType.FETCH_SUCCESS,
           payload: responseArray
         })
@@ -38,7 +40,7 @@ const MainContainer = () => {
       catch (error) {
 
         // When Fetching is not successful
-        dispatch({
+        arrayDispatch({
           type: ActionType.FETCH_FAILURE,
           payload: {
             message: error.message
@@ -55,7 +57,7 @@ const MainContainer = () => {
     apiCallerFunction();
     
       
-  }, [dispatch])
+  }, [arrayDispatch])
 
 
 
