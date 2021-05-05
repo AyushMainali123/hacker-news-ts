@@ -63,7 +63,7 @@ const Card = ({ item, className }: IProps) => {
                 {item.title ? item.title : null}
             </CardTop>
             <CardMid>
-                {item.text ? item.text : dummyText}
+                {item.text ? <div dangerouslySetInnerHTML = { {__html: item.text} }/> : dummyText}
             </CardMid>
             <CardBottom>
                 <CardTime>

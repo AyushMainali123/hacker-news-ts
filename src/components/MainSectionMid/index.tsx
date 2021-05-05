@@ -4,6 +4,15 @@ import { ArrayContext } from '../../Context/HackerNewsResponseArrayContext'
 import {ItemsContext} from '../../Context/HackerNewsResponseItemsContext'
 import ItemsCardContainer from "../ItemsCardContainer";
 import Spinner from "../Spinner";
+import styled from 'styled-components'
+
+
+const StyledSectionWrapper = styled(SectionWrapper)`
+
+`
+
+
+
 const MainSectionMid = () => {
 
     const { state: arrayState } = useContext(ArrayContext);
@@ -26,11 +35,11 @@ const MainSectionMid = () => {
     }
 
     return (
-        <SectionWrapper>
+        <StyledSectionWrapper>
             {
                returnMainContainerBody()
             }
-        </SectionWrapper>
+        </StyledSectionWrapper>
     )
 }
 

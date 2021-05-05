@@ -1,8 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
+
+:root {
+  --color-primary: #FBC91b;
+  --color-grey: #F2F2F2;
+  --color-textBlack: rgba(0, 0, 0, 0.82);
+  --color-textGrey: rgba(0, 0, 0, 0.5);
+}
+
 body {
   margin: 0;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+
+/* Global Styles */
+
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--color-grey); 
+  border-radius: 20px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary); 
+}
+
+/* Handle on hover */
+/* ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-textGrey); 
+} */

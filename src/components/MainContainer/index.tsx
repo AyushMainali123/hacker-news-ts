@@ -16,6 +16,9 @@ const MainContainerWrapper = styled.div`
   padding-left: 15px;
   padding-right: 15px;
   box-shadow: inset 0px 3px 8px rgba(0, 0, 0, 0.08);
+  height: calc(100vh - 150px);
+  overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 type ActiveValueTypes = "New" | "Past"
