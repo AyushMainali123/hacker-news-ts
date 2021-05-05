@@ -25,7 +25,7 @@ const MainSectionTop = ({activeValue, setActiveValue}: PropsInterface) => {
     
     const handleButtonClick = (value: ActiveValueTypes) => {
 
-        // Resseting All Datas 
+        // Resseting All Datas to initial Values
         dispatch({
             type: ActionType.RESET_DATAS
         })
