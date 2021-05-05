@@ -19,6 +19,7 @@ const MainContainerWrapper = styled.div`
   height: calc(100vh - 150px);
   overflow-y: auto;
   overflow-x: hidden;
+  word-wrap: break-word;
 `;
 
 type ActiveValueTypes = "New" | "Past"
