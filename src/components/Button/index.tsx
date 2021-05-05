@@ -34,7 +34,7 @@ const StyledButton = styled.button<{variant: "pill" | "standard" | "default", se
 interface ButtonProps {
     children: React.ReactNode,
     className?: string,
-    onClick?: () => void;
+    onClick?: (event?: React.MouseEvent<HTMLButtonElement>, ...rest: any[]) => void;
     variant?: "pill" | "standard" | "default",
     selected?: true | false
 }
