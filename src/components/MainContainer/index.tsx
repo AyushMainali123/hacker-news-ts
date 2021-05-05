@@ -63,7 +63,7 @@ const MainContainer = () => {
   useEffect(() => {
     const itemsApiCallerFunction = async () => {
       if (arrayState.data.totalResponse.length > 0) {
-        const promisesArray = arrayState.data.chunksArray[0].map((id: number) => fetchHackerAPIItemsFromID(id))
+        const promisesArray = arrayState.data.chunksArray[arrayState.data.currentPosition].map((id: number) => fetchHackerAPIItemsFromID(id))
         const resolvedResponse = await Promise.all(promisesArray);
         const dataToBeDispatched = resolvedResponse.map(response => response.data)
         console.log(dataToBeDispatched);

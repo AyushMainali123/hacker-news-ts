@@ -4,7 +4,9 @@ import styled from 'styled-components'
 import { useContext} from "react";
 import axios from "src/axios";
 import { ArrayContext } from '../../Context/HackerNewsResponseArrayContext'
-import {ActionType} from '../../actions/HackerNewsResponseArray'
+import { ActionType as ArrayActionType } from '../../actions/HackerNewsResponseArray'
+import {ActionType as ItemsActionType} from '../../actions/HackerNewsResponseItems'
+import { ItemsContext } from "src/Context/HackerNewsResponseItemsContext";
 
 type ActiveValueTypes = "New" | "Past"
 
@@ -21,21 +23,24 @@ interface PropsInterface {
 
 const MainSectionTop = ({activeValue, setActiveValue}: PropsInterface) => {
 
-    const {dispatch} = useContext(ArrayContext)
-    
+    const {dispatch: arrayDispatch} = useContext(ArrayContext)
+    const {dispatch: itemsDispatch} = useContext(ItemsContext)
     const handleButtonClick = (value: ActiveValueTypes) => {
 
         // Resseting All Datas to initial Values
-        dispatch({
-            type: ActionType.RESET_DATAS
+        arrayDispatch({
+            type: ArrayActionType.RESET_DATAS
+        })
+        itemsDispatch({
+            type: ItemsActionType.RESET_DATAS
         })
         const apiCallFunction = async () => {
             try {
                 const responseArray = await axios('/topstories.json?print=pretty')
                 if (value === "New") {
                     // For Re rendering all datas
-                    dispatch({
-                        type: ActionType.FETCH_SUCCESS,
+                    arrayDispatch({
+                        type: ArrayActionType.FETCH_SUCCESS,
                         payload: responseArray
                     })
                     return;
@@ -45,8 +50,8 @@ const MainSectionTop = ({activeValue, setActiveValue}: PropsInterface) => {
                      // For Re rendering all datas
                     const reverseArrayResponse = {data: responseArray.data.reverse()};
                     console.log({reverseArrayResponse});
-                    dispatch({
-                        type: ActionType.FETCH_SUCCESS,
+                    arrayDispatch({
+                        type: ArrayActionType.FETCH_SUCCESS,
                         payload: reverseArrayResponse
                     })
                     return;
@@ -54,8 +59,8 @@ const MainSectionTop = ({activeValue, setActiveValue}: PropsInterface) => {
                 
             }
             catch (error) {
-                dispatch({
-                    type: ActionType.FETCH_FAILURE,
+                arrayDispatch({
+                    type: ArrayActionType.FETCH_FAILURE,
                     payload: {
                         message: error.message
                     }
