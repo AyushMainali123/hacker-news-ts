@@ -19,23 +19,12 @@ const MainSectionMid = () => {
             return <h1 className = "error">{ itemsError }</h1>
         }
 
-        // // returns total Number of data to be returned
-        // const positionsArray = Array.from(Array(arrayData.totalChunks).keys())
-
-        // // Final Array data that is returned
-        // const dataToBeReturned = positionsArray.map(position => arrayData.chunksArray[position].map((item: number) => <div key={item} className="data">{item}</div>))
         console.log({itemsData, itemsError, itemsLoading})
         const dataToBeReturned = itemsData.map(data => <div key={data.id}>{data.by}</div>)
         return [
             ...dataToBeReturned,
         ]
     }
-
-    // const returnMainContainerBody = () => {
-    //     console.log(loading, itemsData, itemsError);
-    //     return <div>Hi</div>
-    // }
-
 
     return (
         <SectionWrapper>
