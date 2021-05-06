@@ -12,7 +12,7 @@ const initialData:HackerNewsItemsArray = {
     totalResponse: [],
     chunksArray: [],
     chunksDisplayedPerRequest: 10,
-    currentPosition: 0,
+    currentPosition: -1,
     totalChunks: 0,
 }
 
@@ -27,7 +27,6 @@ export const ArrayContext = createContext<{ state: ResponseArrayStateInterface, 
     state: initialState,
     dispatch: () => undefined
 })
-
 
 
 const HackerNewsResponseArrayContext = ({ children }: Props) => {
