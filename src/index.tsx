@@ -5,16 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import HackerNewsResponseArrayContext from './Context/HackerNewsResponseArrayContext'
 import HackerNewsResponseItemsContext from './Context/HackerNewsResponseItemsContext';
+import { BrowserRouter as Router } from 'react-router-dom'
 ReactDOM.render(
   <React.StrictMode>
-    <HackerNewsResponseItemsContext>
-      <HackerNewsResponseArrayContext>
+    <Router>
+      <HackerNewsResponseItemsContext>
+        <HackerNewsResponseArrayContext>
           <App />
-      </HackerNewsResponseArrayContext>
-    </HackerNewsResponseItemsContext>
-
+        </HackerNewsResponseArrayContext>
+      </HackerNewsResponseItemsContext>
+    </Router>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

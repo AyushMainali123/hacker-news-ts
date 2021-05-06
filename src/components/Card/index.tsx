@@ -2,7 +2,7 @@ import {HackerNewsResponseItem} from '../../interfaces/HackerNewsResponseItem'
 import styled from 'styled-components'
 import colors from 'src/styles/colors'
 import TimeAgo from 'react-timeago'
-
+import {Link} from 'react-router-dom'
 interface IProps {
     item: HackerNewsResponseItem,
     className?: string
@@ -58,6 +58,11 @@ const HorizontalLine = styled.div`
     margin: 0px 6px;
 `
 
+const StyledLink = styled(Link)`
+    text-decoration: none;
+`
+
+
 const CardComments = styled.div``
 
 const dummyText = `
@@ -67,34 +72,33 @@ const dummyText = `
 const Card = ({ item, className }: IProps) => {
     const clockImage = `${process.env.PUBLIC_URL}/assets/images/clock.png`;
     return (
-        <CardContainer className = {className}>
-            <CardTop>
-                {item.title ? item.title : null}
-            </CardTop>
-            <CardMid>
-                {item.text ? <div dangerouslySetInnerHTML = { {__html: item.text} }/> : dummyText}
-            </CardMid>
-            <CardBottom>
-                <CardTime>
-                    <img src={clockImage} alt={"clock"} width={10} height={10} />
-                    {
-                        item.time ?
-                        <span>
-                                <TimeAgo date={ item.time * 1000 }/>
-                        </span> :
-                        null
-                    }
-                    
-                </CardTime>
-                <HorizontalLine />
-                <CardComments>
-                    
-                  <span>{ item.kids ? item.kids.length : 0 } comments</span>
-                    
-                </CardComments>
-            </CardBottom>
-        </CardContainer>
-    )
+      <CardContainer className={className}>
+        <StyledLink to={`/detail/${item.id}`}>
+          <CardTop>{item.title ? item.title : null}</CardTop>
+        </StyledLink>
+        <CardMid>
+          {item.text ? (
+            <div dangerouslySetInnerHTML={{ __html: item.text }} />
+          ) : (
+            dummyText
+          )}
+        </CardMid>
+        <CardBottom>
+          <CardTime>
+            <img src={clockImage} alt={"clock"} width={10} height={10} />
+            {item.time ? (
+              <span>
+                <TimeAgo date={item.time * 1000} />
+              </span>
+            ) : null}
+          </CardTime>
+          <HorizontalLine />
+          <CardComments>
+            <span>{item.kids ? item.kids.length : 0} comments</span>
+          </CardComments>
+        </CardBottom>
+      </CardContainer>
+    );
 }
 
 export default Card
