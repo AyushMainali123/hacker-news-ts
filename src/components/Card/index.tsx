@@ -12,6 +12,15 @@ const CardContainer = styled.div`
     border-radius: 12px;
     box-shadow: 0px 3px 28px rgba(0, 0, 0, 0.08);
     padding: 16px;
+    word-wrap: break-word;
+
+    & pre {
+        word-wrap: break-word;
+        overflow: auto;
+        padding: 10px;
+        background: ${colors.grey};
+        border-radius: 12px;
+    }
 
 `
 
