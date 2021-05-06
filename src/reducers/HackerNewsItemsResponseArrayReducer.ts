@@ -5,8 +5,10 @@ import { ResponseArrayItemsStateInterface } from '../interfaces/ResponseArrayIte
 export const itemsReducer = (state: ResponseArrayItemsStateInterface, action: ResponseItemActions): ResponseArrayItemsStateInterface => {
     switch (action.type) {
         case ActionType.FETCH_SUCCESS:
-            console.log("FINALLY!")
-            return {...state, data: [...state.data, ...action.payload.data], loading: false}
+            const finalDataToBeReturned = action.payload.data.filter(data => {
+              return !state.data.some(({id}) => id === data.id)
+            })
+            return {...state, data: [...state.data, ...finalDataToBeReturned], loading: false}
         case ActionType.FETCH_FAILURE:
             return { ...state, loading: false, error: action.payload.message }
         case ActionType.RESET_DATAS:
