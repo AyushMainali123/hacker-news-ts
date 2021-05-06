@@ -27,7 +27,7 @@ export const arrayReducer = (state: ResponseArrayStateInterface, action: Respons
                 totalResponse: [],
                 chunksArray: [],
                 chunksDisplayedPerRequest: 10,
-                currentPosition: 0,
+                currentPosition: -1,
                 totalChunks: 0,
             }
             return {...state, error: '', data: {...initialData}, loading: true}
