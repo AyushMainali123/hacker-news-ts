@@ -5,18 +5,42 @@ import { HackerNewsResponseItem } from "src/interfaces/HackerNewsResponseItem";
 import Spinner from "src/components/Spinner";
 import { Link } from "react-router-dom";
 import Button from "src/components/Button";
-import MainContainerWrapper from '../containers/MainContainerWrapper'
+import MainContainerWrapper from "../containers/MainContainerWrapper";
+import colors from "src/styles/colors";
+import TimeAgo from "react-timeago";
 interface IProps {
   id: string;
 }
 
 const StyledGoBackButton = styled(Button)`
   padding: 10px 15px;
-  margin: 12px 0;
+  margin: 12px 0 18px;
+`;
+const Title = styled.div`
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: bold;
+  margin: 8px 0 18px;
+  color: ${colors.textBlack};
+`;
+
+const Description = styled.div`
+  font-size: 14px;
+  line-height: 18px;
+  color: ${colors.textBlack};
+  margin-top: 4px;
+  margin-bottom: 12px;
+`;
+
+const TimeContainer = styled.div``;
+
+const dummyText = `
+    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, …when an unknown printer took a galley of type and scrambled
 `;
 
 const TopSection = styled.div``;
 const MidSection = styled.div``;
+
 
 const DetailsMain = ({ id }: IProps) => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -48,7 +72,25 @@ const DetailsMain = ({ id }: IProps) => {
     if (error.length > 0) {
       return <div>{error}</div>;
     }
-    return <div>{data !== null ? data.title : null}</div>;
+    return (
+      <>
+        {data !== null ? (
+          <>
+            <TimeContainer>
+              <TimeAgo date={data.time ? data.time * 1000 : 0} />
+            </TimeContainer>
+            <Title>{data.title ? data.title : "Lorem Ipsum"}</Title>
+            <Description>
+              {data.text ? (
+                <div dangerouslySetInnerHTML={{ __html: data.text }} />
+              ) : (
+                dummyText
+              )}
+            </Description>
+          </>
+        ) : null}
+      </>
+    );
   };
 
   return (
@@ -59,6 +101,7 @@ const DetailsMain = ({ id }: IProps) => {
         </Link>
       </TopSection>
       <MidSection>{returnRequiredJSX()}</MidSection>
+      
     </MainContainerWrapper>
   );
 };
