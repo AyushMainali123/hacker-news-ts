@@ -1,9 +1,22 @@
-const Details = () => {
-    return (
-        <div>
-            This Is A Details Page
-        </div>
-    )
+import Footer from "src/components/Footer";
+import Navbar from "src/components/Navbar";
+import { useParams } from "react-router-dom";
+import DetailsMain from "src/DetailsMain";
+
+interface ParamTypes {
+    id: string
 }
 
-export default Details
+const Details = () => {
+  const {id} = useParams<ParamTypes>();
+  
+  return (
+    <>
+      <Navbar />
+          <DetailsMain id={ id }/>
+      <Footer />
+    </>
+  );
+};
+
+export default Details;
