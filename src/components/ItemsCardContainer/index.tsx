@@ -17,7 +17,7 @@ const ItemsCardContainer = ({data}: IProps) => {
     return (
         <ItemsCardWrapper>
           {
-                data.map(item => <Card item={item} key={ item.id }/>)
+                data.map(item => item ? <Card item={item} key={ item.id }/> : null)
           }
         </ItemsCardWrapper>
     )

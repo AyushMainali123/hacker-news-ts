@@ -2,7 +2,8 @@ import {HackerNewsResponseItem} from '../interfaces/HackerNewsResponseItem'
 export enum ActionType{
     FETCH_SUCCESS,
     FETCH_FAILURE,
-    RESET_DATAS
+    RESET_DATAS,
+    LOADING_START
 }
 
 
@@ -25,7 +26,11 @@ export interface ResetDatas {
 }
 
 
+export interface LoadingStart {
+    type: ActionType.LOADING_START
+}
 
-export type ResponseItemActions = SuccessFetch | ErrorFetch | ResetDatas
+
+export type ResponseItemActions = SuccessFetch | ErrorFetch | ResetDatas | LoadingStart
 
 

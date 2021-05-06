@@ -36,12 +36,13 @@ interface ButtonProps {
     className?: string,
     onClick?: (event?: React.MouseEvent<HTMLButtonElement>, ...rest: any[]) => void;
     variant?: "pill" | "standard" | "default",
-    selected?: true | false
+    selected?: true | false,
+    rest?: any[]
 }
 
-const Button = ({children, className, onClick, variant="standard", selected=true}: ButtonProps) => {
+const Button = ({children, className, onClick, variant="standard", selected=true, ...rest}: ButtonProps) => {
     return (
-        <StyledButton className = {className} onClick = {onClick} variant={variant} selected={selected}>
+        <StyledButton className = {className} onClick = {onClick} variant={variant} selected={selected} {...rest}>
             {children}
         </StyledButton>
     )

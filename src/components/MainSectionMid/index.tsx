@@ -23,21 +23,25 @@ const MainSectionMid = () => {
     console.log({itemsState, itemsData, itemsError, itemsLoading, arrayState, arrayLoading, arrayData, arrayError})
 
     const returnMainContainerBody = () => {
-        if (itemsLoading === true) {
-            return <Spinner />
-        }
         if (itemsError.length > 0) {
             return <h1 className = "error">{ itemsError }</h1>
         }
 
-        console.log({ itemsData, itemsError, itemsLoading })
-        return <ItemsCardContainer data={ itemsData }/>
+        if (itemsData.length > 0) {
+            return <ItemsCardContainer data={ itemsData }/>
+        }
+        
+        return null;
+    
     }
 
     return (
         <StyledSectionWrapper>
             {
-               returnMainContainerBody()
+                returnMainContainerBody()
+            }
+            {
+                itemsLoading && <Spinner />
             }
         </StyledSectionWrapper>
     )

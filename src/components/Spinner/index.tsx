@@ -6,6 +6,7 @@ const Container = styled.div`
     display: flex;
     width: 100%;
     justify-content: center;
+    margin-top: 10px;
 `
 
 const Spinner = () => {

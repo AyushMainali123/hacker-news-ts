@@ -10,7 +10,9 @@ export const itemsReducer = (state: ResponseArrayItemsStateInterface, action: Re
         case ActionType.FETCH_FAILURE:
             return { ...state, loading: false, error: action.payload.message }
         case ActionType.RESET_DATAS:
-            return {...state, loading: true, error: '', data: []}
+            return { ...state, loading: true, error: '', data: [] }
+        case ActionType.LOADING_START:
+            return {...state, loading: true}
         default:
             return {...state}
     }
