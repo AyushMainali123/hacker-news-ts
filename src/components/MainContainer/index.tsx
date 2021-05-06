@@ -74,7 +74,7 @@ const MainContainer = () => {
       }
     };
     itemsApiCallerFunction();
-  }, [arrayState]);
+  }, [arrayState.data.currentPosition]);
 
   return (
     <MainContainerWrapper>
