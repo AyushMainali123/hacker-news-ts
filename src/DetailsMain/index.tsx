@@ -8,6 +8,7 @@ import Button from "src/components/Button";
 import MainContainerWrapper from "../containers/MainContainerWrapper";
 import colors from "src/styles/colors";
 import TimeAgo from "react-timeago";
+import ItemsCardContainer from "src/components/ItemsCardContainer";
 interface IProps {
   id: string;
 }
@@ -40,13 +41,26 @@ const dummyText = `
 
 const TopSection = styled.div``;
 const MidSection = styled.div``;
+const BottomSection = styled.div`
+  margin-bottom: 30px;
+`;
 
+const CommentsTitle = styled.div`
+  font-weight: bold;
+  margin-bottom: 10px;
+`;
+
+const CommentsBody = styled.div``;
 
 const DetailsMain = ({ id }: IProps) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
   const [data, setData] = useState<HackerNewsResponseItem | null>(null);
-
+  const [commentsLoading, setCommentsLoading] = useState(true);
+  const [commentsError, setCommentsError] = useState("");
+  const [commentsData, setCommentsData] = useState<
+    HackerNewsResponseItem[] | null
+  >(null);
   useEffect(() => {
     const fetchFromApi = async () => {
       const result = await fetchHackerAPIItemsFromID(Number(id));
@@ -64,6 +78,36 @@ const DetailsMain = ({ id }: IProps) => {
     };
     apiCallerFunction();
   }, [id]);
+
+  useEffect(() => {
+    const fetchFromApi = async (id: string | number) => {
+      const result = await fetchHackerAPIItemsFromID(Number(id));
+      return result;
+    };
+
+    const apiCallerFunction = async () => {
+      if (data && data.kids && data.kids.length > 0) {
+        try {
+          const promises = data.kids.map((kid: number) => fetchFromApi(kid));
+          const responseArray = await Promise.all([...promises]);
+          const result: HackerNewsResponseItem[] = responseArray.map(
+            ({ data }) => data
+          );
+          setCommentsLoading(false);
+          setCommentsData(result);
+        } catch (error) {
+          setCommentsLoading(false);
+          setCommentsError(
+            error.message ? error.message : "Error Fetching Comments"
+          );
+        }
+      } else {
+        setCommentsLoading(false);
+      }
+    };
+
+    apiCallerFunction();
+  }, [data]);
 
   const returnRequiredJSX = () => {
     if (loading) {
@@ -93,6 +137,39 @@ const DetailsMain = ({ id }: IProps) => {
     );
   };
 
+  const returnCommentsJSX = () => {
+    if (loading || error.length > 0) {
+      return;
+    }
+
+    if (commentsLoading) {
+      return <Spinner />;
+    }
+
+    if (data && data.kids && data.kids.length === 0) {
+      return <CommentsTitle>No Comments to show</CommentsTitle>;
+    }
+    if (commentsError.length > 0) {
+      return <div>{commentsError}</div>;
+    }
+    return (
+      <>
+        {data && data.kids ? (
+          <>
+            <CommentsTitle>Comments: </CommentsTitle>
+            <CommentsBody>
+              {commentsData !== null ? (
+                <ItemsCardContainer data={commentsData} cardType={"Comment"} />
+              ) : null}
+            </CommentsBody>
+          </>
+        ) : (
+          <div>No Comments</div>
+        )}
+      </>
+    );
+  };
+
   return (
     <MainContainerWrapper>
       <TopSection>
@@ -101,7 +178,7 @@ const DetailsMain = ({ id }: IProps) => {
         </Link>
       </TopSection>
       <MidSection>{returnRequiredJSX()}</MidSection>
-      
+      <BottomSection>{returnCommentsJSX()}</BottomSection>
     </MainContainerWrapper>
   );
 };
