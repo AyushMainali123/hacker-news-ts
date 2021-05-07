@@ -1,5 +1,4 @@
-// import React from 'react'
-import React, { createContext, useReducer } from 'react'
+import { createContext, useReducer } from 'react'
 import { ResponseArrayItemsStateInterface } from '../../interfaces/ResponseArrayItemsStateInterface'
 import {ResponseItemActions} from '../../actions/HackerNewsResponseItems'
 import {itemsReducer} from '../../reducers/HackerNewsItemsResponseArrayReducer'
