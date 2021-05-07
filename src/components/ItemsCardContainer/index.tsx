@@ -1,9 +1,13 @@
 import {HackerNewsResponseItem} from '../../interfaces/HackerNewsResponseItem'
 import Card from '../Card'
 import styled from 'styled-components' 
+import { CardType } from 'src/interfaces/CardType'
+
+
 
 interface IProps {
-    data: HackerNewsResponseItem[]
+    data: HackerNewsResponseItem[],
+    cardType?: CardType
 }
 
 const ItemsCardWrapper = styled.div`
@@ -12,12 +16,12 @@ const ItemsCardWrapper = styled.div`
     gap: 12px;
 `
 
-const ItemsCardContainer = ({data}: IProps) => {
+const ItemsCardContainer = ({data, cardType="Story"}: IProps) => {
     console.log(data)
     return (
         <ItemsCardWrapper>
           {
-                data.map(item => item ? <Card item={item} key={ item.id }/> : null)
+                data.map(item => item ? <Card item={item} key={item.id} type={ cardType }/> : null)
           }
         </ItemsCardWrapper>
     )
